@@ -14,8 +14,9 @@ app.post("/api/chat", async (req, res) => {
             return res.status(400).json({ error: "El prompt es obligatorio" });
         }
 
+        // Usa el modelo finetuneado en Ollama
         const response = await axios.post("http://localhost:11434/api/generate", {
-            model: "llama3.2",
+            model: "nuevo1",  // <---- Cambiado de "llama3.2" a tu modelo
             prompt: prompt, 
             stream: false
         });
@@ -28,3 +29,4 @@ app.post("/api/chat", async (req, res) => {
 });
 
 app.listen(3000, () => console.log("Servidor corriendo en http://localhost:3000"));
+
